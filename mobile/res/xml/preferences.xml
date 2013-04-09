@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="pref_force_desktop"
+        android:title="@string/pref_force_desktop"
+        android:summary="@string/pref_force_desktop_sum"
+        android:defaultValue="false" />
+
+    <PreferenceCategory
+        android:key="pref_developer_options"
+        android:title="@string/pref_developer_options">
+
+        <EditTextPreference
+            android:key="pref_iitc_source"
+            android:title="@string/pref_select_iitc"
+            android:summary=""
+            android:defaultValue="local"/>
+
+        <ListPreference
+            android:key="pref_build_version"
+            android:title="@string/build_version"
+            android:enabled="false"
+            android:selectable="false" />
+
+        <ListPreference
+            android:key="pref_iitc_version"
+            android:title="@string/iitc_version"
+            android:enabled="false"
+            android:selectable="false" />
+    </PreferenceCategory>
+</PreferenceScreen>
