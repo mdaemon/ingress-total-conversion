@@ -13,6 +13,7 @@
 // ==/UserScript==
 
 /* whatsnew
+* 0.0.10 : MORGAN : adding date to export filename
 * 0.0.10 : added reso owner and level to CSV output, reenabled export
 * 0.0.9 : bugs hunt
 * 0.0.8 : Aborted to avoid problems with Niantic (export portals informations as csv or kml file)
@@ -273,12 +274,19 @@ window.plugin.portalslist.stats = function(sortBy) {
     return html;
 }
 
+
 //return Html generated to export links
 window.plugin.portalslist.exportLinks = function(){
     var html='';
     var stamp = new Date().getTime();
+    var year = new Date.getFullYear();
+    var month = new Date.getMonth();
+    var day = new Date.getDate();
+    var hour = new Date.getHours();
+    var min = new Date.getMinutes();
+    var sec = new Date.getSeconds();
     
-    html+='<div><aside><a download="Ingress Export.csv" href="' + window.plugin.portalslist.export('csv') + '">Export as .csv</a></aside>' 
+    html+='<div><aside><a download="IngressExport_' + stamp +'.csv" href="' + window.plugin.portalslist.export('csv') + '">Export as .csv</a></aside>' 
     + '<aside><a download="Ingress Export.kml" href="' + window.plugin.portalslist.export('kml') + '">Export as .kml</a></aside>'
     + '</div>';
     return html;
