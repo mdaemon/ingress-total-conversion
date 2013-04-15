@@ -274,19 +274,26 @@ window.plugin.portalslist.stats = function(sortBy) {
     return html;
 }
 
+//create 0 padded strings
+window.plugin.portalslist.pad = function(num, size) {
+    var s = "000000000" + num;
+    return s.substr(s.length-size);
+}
 
 //return Html generated to export links
 window.plugin.portalslist.exportLinks = function(){
     var html='';
-    var stamp = new Date().getTime();
-    var year = new Date.getFullYear();
-    var month = new Date.getMonth();
-    var day = new Date.getDate();
-    var hour = new Date.getHours();
-    var min = new Date.getMinutes();
-    var sec = new Date.getSeconds();
+    var oDate =  new Date();
+    var stamp = oDate.getTime();
+    var year = window.plugin.portalslist.pad(oDate.getFullYear(), 4);
+    var month = window.plugin.portalslist.pad(oDate.getMonth()+1, 2);
+    var day = window.plugin.portalslist.pad(oDate.getDate(), 2);
+    var hour = window.plugin.portalslist.pad(oDate.getHours(), 2);
+    var min = window.plugin.portalslist.pad(oDate.getMinutes(), 2);
+    var sec = window.plugin.portalslist.pad(oDate.getSeconds(), 2);
+    var export_time = year + month + day + hour + min + sec;
     
-    html+='<div><aside><a download="IngressExport_' + stamp +'.csv" href="' + window.plugin.portalslist.export('csv') + '">Export as .csv</a></aside>' 
+    html+='<div><aside><a download="IngressExport_' + export_time +'.csv" href="' + window.plugin.portalslist.export('csv') + '">Export as .csv</a></aside>' 
     + '<aside><a download="Ingress Export.kml" href="' + window.plugin.portalslist.export('kml') + '">Export as .kml</a></aside>'
     + '</div>';
     return html;
