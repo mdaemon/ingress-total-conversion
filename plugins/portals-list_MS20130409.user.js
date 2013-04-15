@@ -13,7 +13,7 @@
 // ==/UserScript==
 
 /* whatsnew
-* 0.0.10 : MORGAN : adding date to export filename
+* 0.0.11 : MORGAN : adding date to export filename
 * 0.0.10 : added reso owner and level to CSV output, reenabled export
 * 0.0.9 : bugs hunt
 * 0.0.8 : Aborted to avoid problems with Niantic (export portals informations as csv or kml file)
