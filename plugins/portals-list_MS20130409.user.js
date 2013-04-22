@@ -1,7 +1,7 @@
 // ==UserScript==
 // @id             iitc-plugin-portals-list@teo96
 // @name           IITC plugin: show list of portals
-// @version        0.0.10.20130409.105400
+// @version        0.0.12.20130422.144600
 // @namespace      https://github.com/jonatkins/ingress-intel-total-conversion
 // @updateURL      https://secure.jonatkins.com/iitc/release/plugins/portals-list.meta.js
 // @downloadURL    https://secure.jonatkins.com/iitc/release/plugins/portals-list.user.js
@@ -13,7 +13,7 @@
 // ==/UserScript==
 
 /* whatsnew
-* 0.0.12 : MORGAN : adding portal GUID to CSV output
+* 0.0.12 : MORGAN : adding portal GUID to CSV output : N.B. the updateURL and downloadURL may mess up your install, you'll need to reinstall, I'm not hosting :-(
 * 0.0.11 : MORGAN : adding date to export filename
 * 0.0.10 : added reso owner and level to CSV output, reenabled export
 * 0.0.9 : bugs hunt
@@ -330,11 +330,9 @@ window.plugin.portalslist.exportCSV = function(){
     csv += 'GUID\tPortal\tLevel\tTeam\tR1\tR2\tR3\tR4\tR5\tR6\tR7\tR8\tEnergy\tS1\tS2\tS3\tS4\tAP Gain\tE/AP\tlat\tlong\tSlot 1\tSlot 2\tSlot 3\tSlot 4\tSlot 5\tSlot 6\tSlot 7\tSlot 8\n';
     
     $.each(portals, function(ind, portal) {
-        
+
         if (filter === 0 || filter === portal.team){
-            var guid = portal.options.guid;
-            csv += guid + '\t' 
-              += portal.name + '\t' 
+            csv += portal.guid + '\t' + portal.name + '\t' 
               + portal.level + '\t'
               + portal.team + '\t';
            
