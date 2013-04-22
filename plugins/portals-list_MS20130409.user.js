@@ -13,6 +13,7 @@
 // ==/UserScript==
 
 /* whatsnew
+* 0.0.12 : MORGAN : adding portal GUID to CSV output
 * 0.0.11 : MORGAN : adding date to export filename
 * 0.0.10 : added reso owner and level to CSV output, reenabled export
 * 0.0.9 : bugs hunt
@@ -326,12 +327,14 @@ window.plugin.portalslist.exportCSV = function(){
     var portals = window.plugin.portalslist.listPortals;
    
    //headers
-    csv += 'Portal\tLevel\tTeam\tR1\tR2\tR3\tR4\tR5\tR6\tR7\tR8\tEnergy\tS1\tS2\tS3\tS4\tAP Gain\tE/AP\tlat\tlong\tSlot 1\tSlot 2\tSlot 3\tSlot 4\tSlot 5\tSlot 6\tSlot 7\tSlot 8\n';
+    csv += 'GUID\tPortal\tLevel\tTeam\tR1\tR2\tR3\tR4\tR5\tR6\tR7\tR8\tEnergy\tS1\tS2\tS3\tS4\tAP Gain\tE/AP\tlat\tlong\tSlot 1\tSlot 2\tSlot 3\tSlot 4\tSlot 5\tSlot 6\tSlot 7\tSlot 8\n';
     
     $.each(portals, function(ind, portal) {
         
         if (filter === 0 || filter === portal.team){
-            csv += portal.name + '\t' 
+            var guid = portal.options.guid;
+            csv += guid + '\t' 
+              += portal.name + '\t' 
               + portal.level + '\t'
               + portal.team + '\t';
            
